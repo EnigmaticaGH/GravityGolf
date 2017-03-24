@@ -35,15 +35,15 @@ public class PauseScript : MonoBehaviour {
         if(pauseScreen.enabled)
         {
             pauseScreen.enabled = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            //Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.visible = false;
             Time.timeScale = 1.0f;
         }
         else
         {
             pauseScreen.enabled = true;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            //Cursor.lockState = CursorLockMode.None;
+            //Cursor.visible = true;
             Time.timeScale = 0.0f;
         }
     }

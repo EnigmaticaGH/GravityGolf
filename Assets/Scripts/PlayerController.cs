@@ -34,8 +34,8 @@ public class PlayerController : MonoBehaviour
         EventHandler.launch += launch;
         //Initalize some variables
         Time.timeScale = 1.0f;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
 		startPos = transform.position;
 		startRot = transform.rotation;
         launchForce = Vector2.zero;
@@ -51,19 +51,51 @@ public class PlayerController : MonoBehaviour
 	void Update ()
 	{
         //Listen for left mouse button
-        if (Input.GetMouseButtonDown(0) && !launched && !paused)
+        if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && !launched && !paused)
         {
             EventHandler.Launch();
             //Add launch force
             GetComponent<Rigidbody2D>().AddForce(launchForce);
         }
-		    
-        if(!launched && !paused)
+        else if ((Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && !paused && launched)
+        {
+            EventHandler.Reset();
+        }
+
+        if (!launched && !paused)
         {
             //Create visual for ball trajectory
             pointer.GetComponent<SpriteRenderer>().enabled = true;
-            xDist += Input.GetAxis("Mouse X") * mouseSensitivity * 50f;
-            yDist += Input.GetAxis("Mouse Y") * mouseSensitivity * 50f;
+            //xDist += Input.GetAxis("Mouse X") * mouseSensitivity * 50f;
+            //yDist += Input.GetAxis("Mouse Y") * mouseSensitivity * 50f;
+            float xIncrease = 0, yIncrease = 0;
+            float multiplier = 1;
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                yIncrease = mouseSensitivity;
+            }
+            else if (Input.GetKey(KeyCode.DownArrow))
+            {
+                yIncrease = -mouseSensitivity;
+            }
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                xIncrease = -mouseSensitivity;
+            }
+            else if (Input.GetKey(KeyCode.RightArrow))
+            {
+                xIncrease = mouseSensitivity;
+            }
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                multiplier = 4;
+            }
+            if (Input.GetKey(KeyCode.LeftAlt))
+            {
+                multiplier = 0.25f;
+            }
+            xDist += xIncrease * multiplier;
+            yDist += yIncrease * multiplier;
             launchForce = new Vector2(xDist, yDist);
 
             if(launchForce.magnitude > maxLaunchForce)
@@ -84,7 +116,7 @@ public class PlayerController : MonoBehaviour
             }     
         }
 
-        if(launched && Input.GetMouseButton(0))
+        /*if(launched && Input.GetMouseButton(0))
         {
             xxDist += Input.GetAxis("Mouse X") * mouseSensitivity;
             yyDist += Input.GetAxis("Mouse Y") * mouseSensitivity;
@@ -102,8 +134,8 @@ public class PlayerController : MonoBehaviour
                 pointer.localRotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Rad2Deg * Mathf.Asin(force.y / force.magnitude)));
             else if(force.magnitude > 0)
                 pointer.localRotation = Quaternion.Euler(new Vector3(0, 0, 180f - Mathf.Rad2Deg * Mathf.Asin(force.y / force.magnitude)));
-        }
-        if(Input.GetMouseButtonUp(0))
+        }*/
+        if ((Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)))
         {
             xxDist = 0f;
             yyDist = 0f;
@@ -112,10 +144,6 @@ public class PlayerController : MonoBehaviour
 
         //Debug.Log(GetComponent<Rigidbody2D>().velocity.magnitude + "km/s");
 
-        if (Input.GetKeyDown(KeyCode.R) && !paused)
-        {
-            EventHandler.Reset();
-        }
         if(Input.GetKeyDown(KeyCode.P))
         {
             EventHandler.Pause();

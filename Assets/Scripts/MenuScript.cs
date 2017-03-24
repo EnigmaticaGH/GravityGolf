@@ -20,8 +20,8 @@ public class MenuScript : MonoBehaviour {
     {
         quitMenu.enabled = false;
         levelMenu.enabled = false;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        //Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = true;
 
         Vector2 canvasSize = new Vector2(1920f, 1080f);
         Rect box = levelPrefab.GetComponent<RectTransform>().rect;
@@ -30,7 +30,9 @@ public class MenuScript : MonoBehaviour {
         {
             int index = i + 1;
             GameObject levelSelector = Instantiate(levelPrefab, Vector3.zero, Quaternion.identity, parent);
-            Vector3 position = new Vector3(50 + (boxSize.x / 2) + (-canvasSize.x / 2) + ((canvasSize.x / 5) * (i % 5)), (canvasSize.y / 2) - 30 - (boxSize.y / 2), 0);
+            float x = 50 + (boxSize.x / 2) + (-canvasSize.x / 2) + ((canvasSize.x / 5) * (i % 5));
+            float y = (canvasSize.y / 2) - 30 - (boxSize.y / 2) - ((boxSize.y + 30) * (i / 5));
+            Vector3 position = new Vector3(x, y, 0);
             levelSelector.GetComponent<RectTransform>().localPosition = position;
             levelSelector.GetComponent<Button>().onClick.AddListener(() => LoadScene(index));
             Text[] texts = levelSelector.GetComponentsInChildren<Text>();

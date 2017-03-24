@@ -65,8 +65,8 @@ public class WinScript : MonoBehaviour {
         winMenu.enabled = true;
         prevBest.enabled = true;
         newBest.enabled = true;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        //Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = true;
         Time.timeScale = 0.0f;
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GravityGolf", "GravityGolf.csproj", "{5F139E70-A0A9-B5FD-F606-1BC31B45E687}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GravityGolf.CSharp", "GravityGolf.CSharp.csproj", "{6C904B77-EB09-3E54-7A78-1E70705ED946}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5F139E70-A0A9-B5FD-F606-1BC31B45E687}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5F139E70-A0A9-B5FD-F606-1BC31B45E687}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5F139E70-A0A9-B5FD-F606-1BC31B45E687}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5F139E70-A0A9-B5FD-F606-1BC31B45E687}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C904B77-EB09-3E54-7A78-1E70705ED946}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C904B77-EB09-3E54-7A78-1E70705ED946}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C904B77-EB09-3E54-7A78-1E70705ED946}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C904B77-EB09-3E54-7A78-1E70705ED946}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

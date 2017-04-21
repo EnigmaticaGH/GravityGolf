@@ -20,6 +20,16 @@ public class Wormhole : MonoBehaviour {
         if (c.gameObject.tag == "Player")
         {
             c.transform.position = exit.position;
+            StartCoroutine(ToggleCollider());
         }
+    }
+
+    IEnumerator ToggleCollider()
+    {
+        Debug.Log("Disabling Collider");
+        exit.GetComponent<CircleCollider2D>().enabled = false;
+        yield return new WaitForSeconds(1);
+        exit.GetComponent<CircleCollider2D>().enabled = true;
+        Debug.Log("Enabling Collider");
     }
 }
